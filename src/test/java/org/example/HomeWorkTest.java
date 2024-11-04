@@ -14,6 +14,7 @@ class HomeWorkTest {
     HomeWork homeWork = new HomeWork();
 
     @Test
+
     void checkFirst() {
 
         assertEquals(0.06, homeWork.getProfit(parseLines("BID 0.01\n" +
