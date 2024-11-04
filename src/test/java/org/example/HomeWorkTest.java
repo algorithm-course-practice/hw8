@@ -16,7 +16,8 @@ class HomeWorkTest {
     @Test
     void checkFirst() {
 
-        assertEquals(0.06, homeWork.getProfit(parseLines("BID 0.01\n" +
+        assertEquals(0.06, homeWork.getProfit(parseLines(
+                "BID 0.01\n" +
                 "BID 10000\n" +
                 "BID 5000\n" +
                 "BID 5000\n" +
@@ -24,11 +25,30 @@ class HomeWorkTest {
                 "DEL 5000\n" +
                 "SALE 3000 3\n" +
                 "SALE 0.01 3")), 0.009);
+
+        assertEquals(0.01, homeWork.getProfit(parseLines(
+                "BID 0.01\n" +
+                        "BID 10000\n" +
+                        "BID 5000\n" +
+                        "BID 5000\n" +
+                        "SALE 7000 1\n" +
+                        "DEL 5000\n" +
+                        "SALE 1000000 3")), 0.009);
+
+        assertEquals(0.04, homeWork.getProfit(parseLines(
+                "BID 0.01\n" +
+                        "BID 10000\n" +
+                        "BID 5000\n" +
+                        "BID 5000\n" +
+                        "SALE 7000 1\n" +
+                        "DEL 5000\n" +
+                        "SALE 0.01 10")), 0.009);
     }
 
     @Test
     void checkSecond(){
-        assertEquals(asList(3, 4), homeWork.getLeaveOrder(parseLines("+ 1\n" +
+        assertEquals(asList(3, 4), homeWork.getLeaveOrder(parseLines(
+                "+ 1\n" +
                 "+ 3\n" +
                 "+ 3\n" +
                 "? 2\n" +
