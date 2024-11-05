@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
 class HomeWorkTest {
 
     HomeWork homeWork = new HomeWork();
@@ -24,6 +25,38 @@ class HomeWorkTest {
                 "DEL 5000\n" +
                 "SALE 3000 3\n" +
                 "SALE 0.01 3")), 0.009);
+    }
+
+    @Test
+    void checkFirst2() {
+
+        assertEquals(0.08, homeWork.getProfit(parseLines("BID 0.01\n" +
+                "BID 10000\n" +
+                "BID 5000\n" +
+                "BID 5000\n" +
+                "BID 5000\n" +
+                "BID 5000\n" +
+                "SALE 7000 5\n" +
+                "DEL 5000\n" +
+                "DEL 5000\n" +
+                "SALE 3000 3\n" +
+                "SALE 0.01 9")), 0.009);
+    }
+
+    @Test
+    void checkFirst3() {
+
+        assertEquals(0.07, homeWork.getProfit(parseLines("BID 0.01\n" +
+                "BID 10000\n" +
+                "BID 5000\n" +
+                "BID 5000\n" +
+                "BID 5000\n" +
+                "BID 5000\n" +
+                "SALE 7000 5\n" +
+                "DEL 5000\n" +
+                "DEL 5000\n" +
+                "SALE 5000 3\n" +
+                "SALE 5000 9")), 0.009);
     }
 
     @Test
