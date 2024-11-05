@@ -1,9 +1,7 @@
 package org.example;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static java.lang.Integer.valueOf;
@@ -25,7 +23,7 @@ public class HomeWork {
                 treap.add((int) (Double.valueOf(args.get(1)) * 100));
             }
             else if (args.get(0).equalsIgnoreCase("SALE")){
-                // splitright -  размер что больше и в прибыль размер или количество на продажу (что меньше)
+                // splitRight -  размер что больше или равно, в прибыль размер или количество на продажу (что меньше)
                 long size = getSize(treap, args);
                 if (valueOf(args.get(2)) > size){
                     profit = (int) (profit +  size);
@@ -65,7 +63,25 @@ public class HomeWork {
      * <a href="https://informatics.msk.ru/mod/statements/view.php?id=1974&chapterid=2782#1">https://informatics.msk.ru/mod/statements/view.php?id=1974&chapterid=2782#1</a><br/>
      */
     public List<Integer> getLeaveOrder(List<String> actionList) {
-        return null;
+        Treap<Integer> s = new Treap<>();
+        Integer next = 0;
+        List<Integer> nextList = new ArrayList<>();
+        for (String arg : actionList){
+            int i = valueOf(arg.substring(2));
+            if (arg.substring(0, 1).equals("+")){
+                s.add(i + next);
+                next = 0;
+            }
+            else if (arg.substring(0, 1).equals("?")){
+                Treap.Node<Integer> splitRight = s.split(i)[1];
+                if (splitRight == null){
+                    next = -1;
+                } else {
+                    next = s.split(i)[1].getKey();
+                }
+                nextList.add(next);
+            }
+        }
+        return nextList;
     }
-
 }
