@@ -66,10 +66,15 @@ public class HomeWork {
         Treap<Integer> s = new Treap<>();
         Integer next = 0;
         List<Integer> nextList = new ArrayList<>();
+        Set<Integer> unique = new HashSet<>();
         for (String arg : actionList){
             int i = valueOf(arg.substring(2));
             if (arg.substring(0, 1).equals("+")){
-                s.add(i + next);
+                i = (i + next) % 1000000000;
+                if (unique.add(i)){
+                    // если нет в сете, то добавим в дерамиду
+                    s.add(i );
+                }
                 next = 0;
             }
             else if (arg.substring(0, 1).equals("?")){
