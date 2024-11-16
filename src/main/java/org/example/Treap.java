@@ -153,7 +153,7 @@ public class Treap {
         return node;
     }
 
-    // Find the next element >= key
+    // Найдите следующий элемент >= ключ
     public int next(int key) {
         Node[] splitNodes = split(root, key);
         Node current = splitNodes[1]; // Right subtree contains all >= key
