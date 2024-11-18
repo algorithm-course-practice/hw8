@@ -1,6 +1,9 @@
 package org.example;
 
 
+import org.example.task.first.OrderedTree;
+import org.example.task.second.Treap;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +16,9 @@ public class HomeWork {
      */
     public Double getProfit(List<String> actionList) {
 
-        Treap treap = new Treap();
+        OrderedTree treap = new OrderedTree();
         double profit = 0;
+        int sold = 0;
 
         for (String action : actionList) {
 
@@ -25,14 +29,16 @@ public class HomeWork {
             double price = Double.parseDouble(parts[1]);
             switch (command) {
                 case "BID":
+                    //treap.insert(price);
                     treap.insert(price);
                     break;
                 case "DEL":
+                    //treap.delete(price);
                     treap.delete(price);
                     break;
                 case "SALE":
                     int quantity = Integer.parseInt(parts[2]);
-                    int sold = treap.sell(price, quantity);
+                    sold = treap.sell(price, quantity);
                     profit += sold * 0.01;
                     break;
             }
